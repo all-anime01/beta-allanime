@@ -1,6 +1,5 @@
 import { Play, Info, ChevronDown, X, Search, Menu } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
 
 // Episodes data organized by seasons
 const allEpisodes = {
@@ -37,7 +36,7 @@ const allEpisodes = {
         'Tras quedar atrapado en el interior de unaun portal rojo, Jinwoo tiene que enfrentarse a un grupo de elfos de hielo sedientos de sangre que pondrán a prueba su humanidad.',
       thumbnail:
         'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/707acde43312c043b135a8d8d12f0372.jpg',
-      releaseDate: 'Enero 15, 2025',
+      releaseDate: 'Enero 18, 2025',
       episodeNumber: 'Subtitulado',
       videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/15.html',
     },
@@ -458,8 +457,8 @@ function SakamotoDaysTV() {
                   onChange={(e) => setSelectedSeason(Number(e.target.value))}
                   className="bg-[#2b2b2b] border border-gray-700 rounded px-4 py-2 appearance-none pr-10 text-sm focus:outline-none focus:border-[#dc2626]"
                 >
-                  <option value={1}>Temporada 1</option>
                   <option value={2}>T2: Arise from the Shadow</option>
+                  <option value={1}>Temporada 1</option>
                 </select>
                 <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" />
               </div>
@@ -546,7 +545,7 @@ function SakamotoDaysTV() {
           <div
             className={`grid ${
               episodeView === 'grid'
-                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-5'
                 : 'grid-cols-1'
             } gap-4 md:gap-6`}
           >
@@ -583,7 +582,7 @@ function SakamotoDaysTV() {
                     </div>
                   </div>
                 {/* ... existing episode card code ... */}
-
+                
               {/* Episode Info */}
                   <div
                     className={`p-4 ${episodeView === 'grid' ? '' : 'flex-1'}`}
@@ -675,7 +674,7 @@ function SakamotoDaysTV() {
                 </span>
                 <span>2024</span>
                 <span className="bg-[#30CA38] text-white px-2 py-0.5 rounded text-xs font-bold">
-                  TV-16
+                  +16
                 </span>
                 <span>2 Temporadas</span>
                 <span className="bg-[#30CA38] text-white px-2 py-0.5 rounded text-xs font-bold">
@@ -690,7 +689,7 @@ function SakamotoDaysTV() {
               <div className="grid md:grid-cols-2 gap-4 md:gap-8 text-xs md:text-sm text-gray-400">
                 <div>
                   <p>
-                    <span className="text-gray-200">Idioma:</span> Sub | Dob
+                    <span className="text-gray-200">Audio:</span> Sub | Dob
                   </p>
                   <p>
                     <span className="text-gray-200">Creador:</span> Chugong

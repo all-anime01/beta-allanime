@@ -1,204 +1,169 @@
 import { Play, Info, ChevronDown, X, Search, Menu } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from './lib/supabase';
 
 // Episodes data organized by seasons
 const allEpisodes = {
-  2: [
-    {
-      id: 13,
-      title: '13. Tú no eres nivel E, ¿verdad?',
-      duration: '24 min',
-      description:
-        'Tras una reunión con los profesores de Jinah, le piden a Jinwoo que hable con una de sus compañeras que trabaja como cazadora. En un esfuerzo por mostrarle la dura realidad de su trabajo, Jinwoo la lleva a una incursión designada para los nuevos cazadores del gremio del Tigre Blanco.',
-      thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e1a8566071311d4a6720540b0d02a623.jpg',
-      releaseDate: 'Enero 4, 2025',
-      episodeNumber: 'Subtitulado',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/13.html',
-    },
-    {
-      id: 14,
-      title: '14. Parece que tú mismo no lo sabes',
-      duration: '24 min',
-      description:
-        'Tras quedar atrapado en el interior de unaun portal rojo, Jinwoo tiene que enfrentarse a un grupo de elfos de hielo sedientos de sangre que pondrán a prueba su humanidad.',
-      thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/b27889eed12a1c5c1c5765eb0d8f82dc.jpg',
-      releaseDate: 'Enero 11, 2025',
-      episodeNumber: 'Subtitulado',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/14.html',
-    },
-    {
-      id: 15,
-      title: '15. Aún queda mucho camino',
-      duration: '23 min',
-      description:
-        'Tras quedar atrapado en el interior de unaun portal rojo, Jinwoo tiene que enfrentarse a un grupo de elfos de hielo sedientos de sangre que pondrán a prueba su humanidad.',
-      thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/707acde43312c043b135a8d8d12f0372.jpg',
-      releaseDate: 'Enero 15, 2025',
-      episodeNumber: 'Subtitulado',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/15.html',
-    },
-  ],
-  1: [
+  5: [
     {
       id: 1,
-      title: 'Ya estoy acostumbrado',
-      duration: '24 min',
+      title: '1. La conspiración',
+      duration: '32 min',
       description:
-        'A Jin-Woo Sung lo conocen el cazador más débil de la humanidad, lo que lo convierte en objeto de burla de sus compañeros, aunque Ju-Hee Lee, una joven sanadora, siempre se preocupa por él y le ayuda a hacer amigos.',
+        'Un castillo gigante en un mundo misterioso. Dos Majin observan por un monitor. Sus nombres son Gomah y Degesu. El monitor muestra a Goku y a los demás en una feroz batalla contra Majin Buu. Gomah y Degesu se dirigen a la Tierra.',
       thumbnail:
-        'https://www.crunchyroll.com/imgsrv/display/thumbnail/320x180/catalog/crunchyroll/9685e02cab2b3d22296e7c7e46d78aa8.jpe',
-      releaseDate: 'Enero 6, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/c750799082deb6a87ded21b117684ca6.jpg',
+      releaseDate: 'Octubre 11, 2024',
       episodeNumber: 'S1:E1',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/1.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/1.html',
     },
     {
       id: 2,
-      title: 'Si tuviera otra oportunidad',
+      title: "2. Glorio",
       duration: '24 min',
       description:
-        'Jin-Woo y sus compañeros están atrapados y no pueden hacer nada mientras la estatua de piedra los masacra uno a uno. Parece que hay una salida a este pérfido juego, pero ¿a qué precio?',
+        'Goku y sus amigos ahora son pequeños debido al plan de Gomah. Deciden viajar al Mundo Demoníaco y comienzan a prepararse. Goku recoge su Bastón Mágico para una nueva aventura. Pero antes de partir, aparece un joven Majin llamado Glorio.',
       thumbnail:
-        'https://www.crunchyroll.com/imgsrv/display/thumbnail/320x180/catalog/crunchyroll/50a0eb40c919b8efea01fd4799df08ff.jpe',
-      releaseDate: 'Enero 13, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/9b70eec9c296d5f79724880cb6ebf851.jpg',
+      releaseDate: 'Octubre 18, 2024',
       episodeNumber: 'S1:E2',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/2.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/2.html',
     },
     {
       id: 3,
-      title: 'Es como un videojuego',
+      title: "3. Daima",
       duration: '24 min',
       description:
-        'Para su sorpresa, Jin-Woo se despierta sano y salvo en el hospital. Al principio cree que los horripilantes sucesos que ha vivido son un sueño, pero las pantallas de estado no desaparecen y no parecen ser visibles para nadie más.',
+        'Goku, Kaio-shin y Glorio se dirigen al Reino Demoníaco. Su avión viaja a través del espacio y hacia una dimensión misteriosa. Llegan a la entrada del Tercer Mundo Demoníaco, el cual se encuentra dentro del Reino Demoníaco.',
       thumbnail:
-        'https://www.crunchyroll.com/imgsrv/display/thumbnail/320x180/catalog/crunchyroll/c6adceca173ff32ae979af193a476fb2.jpe',
-      releaseDate: 'Enero 20, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/cd3e5a3d0b1576a58bbaa263fc58dc1e.jpg',
+      releaseDate: 'Octubre 25, 2024',
       episodeNumber: 'S1:E3',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/3.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/3.html',
     },
     {
       id: 4,
-      title: 'Tengo que hacerme más fuerte',
+      title: "4. Conversadores",
       duration: '24 min',
       description:
-        'En un mundo donde portales misteriosos conectan con mazmorras llenas de monstruos, Sung Jin-Woo lucha por sobrevivir como el cazador más débil.',
+        'Obligados a atravesar el Tercer Mundo Demoníaco a pie, Goku y sus compañeros se detienen en una tienda solitaria. Allí encuentran unos productos muy extraños y conocen a una pareja majin bastante conversadora y peculiar.',
       thumbnail:
-        'https://www.crunchyroll.com/imgsrv/display/thumbnail/320x180/catalog/crunchyroll/78de61960488c9f16f960dae0b554eca.jpe',
-      releaseDate: 'Enero 27, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e93df1712febd0ea52d1e0b41b46dd80.jpg',
+      releaseDate: 'Noviembre 01, 2024',
       episodeNumber: 'S1:E4',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/4.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/4.html',
     },
     {
       id: 5,
-      title: 'Un muy buen trato',
+      title: "5. Panzy",
       duration: '24 min',
       description:
-        'Cuando Jinwoo sale del hospital, las enfermeras se fijan en su buen estado físico. ¿Siempre tuvo tan buen cuerpo? Poco después, un grupo de Cazadores de rango C buscan un par de compañeros para rellenar y poder entrar a una mazmorra también C, así que como le ofrecen una buena cantidad, acepta.',
+        'El majin enmascarado que apareció ante Goku y sus compañeros es una joven llamada Panzy.',
       thumbnail:
-        'https://www.crunchyroll.com/imgsrv/display/thumbnail/320x180/catalog/crunchyroll/403416c5837765866f3b19ac27932777.jpe',
-      releaseDate: 'Febrero 3, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e8cea564d06dfb3068b59ee81bfa2e4f.jpg',
+      releaseDate: 'Noviembre 08, 2024',
       episodeNumber: 'S1:E5',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/5.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/5.html',
     },
     {
       id: 6,
-      title: 'Comienza la verdadera caza',
+      title: "6. Relámpago",
       duration: '24 min',
       description:
-        'Jinwoo cae en la trampa que su nuevo equipo temporal le tiende y tiene que sobrevivir como puede, una vez más, ante un monstruo mucho más poderoso que él. A su lado está Jinho, a quien también han abandonado.',
+        'Tras toparse con la Policía Militar, guardianes del Reino Demoníaco, nuestros cuatro amigos se ven obligados a acampar en una cueva.',
       thumbnail:
-        'https://www.crunchyroll.com/imgsrv/display/thumbnail/320x180/catalog/crunchyroll/4622fd0dd6f0072211526a8ae67f0c5c.jpe',
-      releaseDate: 'Febrero 10, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/d4f3b7d1dde8e6dc661f87e3622ebb6f.jpg',
+      releaseDate: 'Noviembre 15, 2024',
       episodeNumber: 'S1:E6',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/6.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/6.html',
     },
     {
       id: 7,
-      title: 'Veamos hasta dónde puedo llegar',
+      title: "7. Collar",
       duration: '24 min',
       description:
-        'Tras el incidente en la mazmorra de rango C, Jinwoo sigue con su vida como siempre, aunque su hermana no acaba de creer la gran evolución de su hermano.',
+        'Goku y sus amigos continúan con el viaje, pero la Policía Militar aparece y vuelve a impedirles el paso. Los siguieron usando la ubicación del Collar Mágico que Panzy.',
       thumbnail:
-        'https://www.crunchyroll.com/imgsrv/display/thumbnail/320x180/catalog/crunchyroll/018425874ef4c1b18b32c26645d6c848.jpe',
-      releaseDate: 'Febrero 17, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/31e33e4b6d3d2c585ef478d40ac1001e.jpg',
+      releaseDate: 'Noviembre 22, 2024',
       episodeNumber: 'S1:E7',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/7.html',
-    },
-    {
-      id: 7.5,
-      title: 'Episodio especial',
-      duration: '24 min',
-      description: 'Repasamos la historia hasta el momento.',
-      thumbnail:
-        'https://www.crunchyroll.com/imgsrv/display/thumbnail/320x180/catalog/crunchyroll/693c3c2259bf67d2afd151453ff15e1d.jpe',
-      releaseDate: 'Febrero 24, 2024',
-      episodeNumber: 'S1:E7.5',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/7.5.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/7.html',
     },
     {
       id: 8,
-      title: 'Esto es frustrante',
+      title: "8. Tamagami",
       duration: '24 min',
       description:
-        'Tras su última incursión en una mazmorra, Jinwoo se ha dado cuenta de su propia debilidad. Quiere subir de nivel lo antes posible, pero eso podrá hacerlo si consigue entrar en las mazmorras.',
+        '¡Comienza la lucha contra el Tamagami! Los Tamagamis son los guardianes de las Esferas del dragón. Panzy y los demás no pueden ocultar su sorpresa al ver luchar a Goku contra uno de ellos. ¿Cómo terminará la batalla?',
       thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/format=auto,width=320,height=180,fit=contain,quality=70/catalog/crunchyroll/ba4454c313d44737a3a72fc390bd2159.jpe',
-      releaseDate: 'Marzo 2, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/10c92080767edcbe212570e2a801fd50.jpg',
+      releaseDate: 'Noviembre 29, 2024',
       episodeNumber: 'S1:E8',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/8.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/8.html',
     },
     {
       id: 9,
-      title: 'Has estado ocultando tus habilidades',
+      title: "9. Ladrones",
       duration: '24 min',
       description:
-        'El grupo de supervivientes de la mazmorra doble entra en la mazmorra junto a los presos condenados y Kang Taeshik, el cazador encargado de supervisar a los prisioneros. Sin embargo, lo que parecía un viaje normal a una mazmorra acaba siendo un río de sangre.',
+        'Los rumores sobre lo que hizo Goku en el Tercer Mundo Demoníaco se esparcen a lo largo del Reino Demoníaco. Para evitar problemas, Goku usa un disfraz en el hotel, pero los ladrones del lugar lo reconocen.',
       thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/format=auto,width=320,height=180,fit=contain,quality=70/catalog/crunchyroll/08ade842ca3ae544ccc5e4f6a207b529.jpe',
-      releaseDate: 'Marzo 9, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/5b828e9c26be6db3a8ca4121d2a522f7.jpg',
+      releaseDate: 'Diciembre 6, 2024',
       episodeNumber: 'S1:E9',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/9.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/9.html',
     },
     {
       id: 10,
-      title: '¿Qué es esto, un pícnic?',
+      title: "10. Océano",
       duration: '24 min',
       description:
-        'Jinwoo y Jinho preparan un grupo repleto de figurantes para entrar ellos solos a las mazmorras y conseguir dinero, pero esto hace que Tigre Blanco se fije en las posibles capacidades de Jinwoo y sospechen de que vivió un segundo despertar.',
+        '¡Goku y sus compañeros llegan al místico Segundo Mundo Demoníaco, donde un océano gigante se extiende hasta donde llega la vista! El grupo queda asombrado con el lugar, ¡pero inmediatamente son atacados por la Policía Militar!',
       thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/format=auto,width=320,height=180,fit=contain,quality=70/catalog/crunchyroll/9833d2909af5311139e79b32a44d9605.jpe',
-      releaseDate: 'Marzo 16, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/c5993c044460a69bc63176113609962b.jpg',
+      releaseDate: 'Diciembre 13, 2024',
       episodeNumber: 'S1:E10',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/10.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/10.html',
     },
     {
       id: 11,
-      title: 'Un caballero defendiendo un trono vacío',
+      title: "11. Leyenda",
       duration: '24 min',
       description:
-        'Sung Jinwoo inicia la misión para cambiar de clase y se enfrenta a un enemigo formidable. Mientras, Jinho se reúne con su familia y otros cazadores visitan la isla de Jeju.',
+        'Goku, Vegeta y los demás, llegan a un planeta que les resulta familiar. Mientras se preparan para irse, ¡una sombra sospechosa los alcanza! ¡Es el Legendario Namek que se quedó solo en el Reino Demoníaco!',
       thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/format=auto,width=320,height=180,fit=contain,quality=70/catalog/crunchyroll/66e3cabc8e0557f77c93c24178e7a5cd.jpe',
-      releaseDate: 'Marzo 23, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f3f4fe392296c4fc23c6f5bfd731c6c8.jpg',
+      releaseDate: 'Diciembre 20, 2024',
       episodeNumber: 'S1:E11',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/11.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/11.html',
     },
     {
       id: 12,
-      title: 'Surge',
+      title: "12. Verdadera fuerza",
       duration: '24 min',
       description:
-        'Mientras Jinwoo se enfrenta a sí mismo e intenta completar el cambio de clase, Choi Jong-in y los cazadores que lo acompañan descubren algo en la isla de Jeju.',
+        'Goku, Vegeta y los demás, llegan a un planeta que les resulta familiar. Mientras se preparan para irse, ¡una sombra sospechosa los alcanza! ¡Es el Legendario Namek que se quedó solo en el Reino Demoníaco!',
       thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/format=auto,fit=contain,width=320,height=180,quality=70/catalog/crunchyroll/cda77a98de7021522ebb5f0cc9bebd7d.jpe',
-      releaseDate: 'Marzo 30, 2024',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/9b70eec9c296d5f79724880cb6ebf851.jpg',
+      releaseDate: 'Diciembre 27, 2024',
       episodeNumber: 'S1:E12',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T1/12.html',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/12.html',
     },
+    {
+      id: 13,
+      title: "13. Sorpresa",
+      duration: '24 min',
+      description:
+        'Goku, Vegeta y los demás, llegan a un planeta que les resulta familiar. Mientras se preparan para irse, ¡una sombra sospechosa los alcanza! ¡Es el Legendario Namek que se quedó solo en el Reino Demoníaco!',
+      thumbnail:
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/4f9fd5186ea16febf5eb0a9a8117838e.jpg',
+      releaseDate: 'Enero 10, 2025',
+      episodeNumber: 'S1:E13',
+      videoUrl: 'https://all-anime.net/frame/Dragon-Ball-Daima/T1/13.html',
+    },
+    // ... rest of episodes
   ],
+  // ... rest of seasons
 };
 
 interface Episode {
@@ -212,13 +177,8 @@ interface Episode {
   videoUrl: string;
 }
 
-interface Season {
-  id: number;
-  name: string;
-}
-
-function SakamotoDaysTV() {
-  const [selectedSeason, setSelectedSeason] = useState(1, 2);
+function App() {
+  const [selectedSeason, setSelectedSeason] = useState(5);
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [showEpisodeModal, setShowEpisodeModal] = useState(false);
@@ -228,14 +188,6 @@ function SakamotoDaysTV() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
-  const [episodeSort, setEpisodeSort] = useState<'newest' | 'oldest'>('newest');
-  const [episodeFilter, setEpisodeFilter] = useState('');
-
-  // Get latest episode for play button
-  const getLatestEpisode = () => {
-    const episodes = allEpisodes[selectedSeason as keyof typeof allEpisodes];
-    return episodes[episodes.length - 1];
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -246,13 +198,12 @@ function SakamotoDaysTV() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+    // Handle internal navigation here
+    const href = e.currentTarget.getAttribute('href');
+    if (href === '#') return;
+    // Add your navigation logic here
   };
 
   const handleEpisodeClick = (episode: Episode) => {
@@ -260,28 +211,8 @@ function SakamotoDaysTV() {
     setShowEpisodeModal(true);
   };
 
-  const getSortedEpisodes = (episodes: Episode[]) => {
-    const sortedEpisodes = [...episodes];
-    if (episodeSort === 'newest') {
-      return sortedEpisodes.reverse();
-    }
-    return sortedEpisodes;
-  };
-
-  const getFilteredEpisodes = (episodes: Episode[]) => {
-    if (!episodeFilter) return episodes;
-
-    return episodes.filter(
-      (episode) =>
-        episode.title.toLowerCase().includes(episodeFilter.toLowerCase()) ||
-        episode.episodeNumber
-          .toLowerCase()
-          .includes(episodeFilter.toLowerCase())
-    );
-  };
-
   return (
-    <div className="min-h-screen w-full bg-[#141414] text-white font-netflix overflow-x-hidden">
+    <div className="min-h-screen bg-[#141414] text-white font-netflix">
       {/* Header */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -300,21 +231,21 @@ function SakamotoDaysTV() {
             <nav className="hidden md:flex gap-6">
               <a
                 href="#inicio"
-                onClick={(e) => handleNavigation(e, 'inicio')}
+                onClick={handleNavigation}
                 className="text-sm hover:text-gray-300"
               >
                 Inicio
               </a>
               <a
                 href="#explorar"
-                onClick={(e) => handleNavigation(e, 'explorar')}
+                onClick={handleNavigation}
                 className="text-sm hover:text-gray-300"
               >
                 Explorar
               </a>
               <a
                 href="#peliculas"
-                onClick={(e) => handleNavigation(e, 'peliculas')}
+                onClick={handleNavigation}
                 className="text-sm hover:text-gray-300"
               >
                 Películas
@@ -371,21 +302,30 @@ function SakamotoDaysTV() {
           <nav className="flex flex-col gap-4 p-8">
             <a
               href="#inicio"
-              onClick={(e) => handleNavigation(e, 'inicio')}
+              onClick={(e) => {
+                handleNavigation(e);
+                setIsMobileMenuOpen(false);
+              }}
               className="text-lg hover:text-gray-300 transition-colors"
             >
               Inicio
             </a>
             <a
               href="#explorar"
-              onClick={(e) => handleNavigation(e, 'explorar')}
+              onClick={(e) => {
+                handleNavigation(e);
+                setIsMobileMenuOpen(false);
+              }}
               className="text-lg hover:text-gray-300 transition-colors"
             >
               Explorar
             </a>
             <a
-              href="https://all-anime.net/peliculas"
-              onClick={(e) => handleNavigation(e, 'peliculas')}
+              href="#peliculas"
+              onClick={(e) => {
+                handleNavigation(e);
+                setIsMobileMenuOpen(false);
+              }}
               className="text-lg hover:text-gray-300 transition-colors"
             >
               Películas
@@ -395,40 +335,38 @@ function SakamotoDaysTV() {
       </header>
 
       {/* Hero Banner */}
-      <div id="inicio" className="relative h-[50vh] md:h-screen w-full">
+      <div className="relative h-[50vh] md:h-screen">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         <img
-          src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=94,width=1920/CurationAssets/Solo%20Leveling/SEASON%202/ULTRA-WIDE/SoloLeveling-S2-KV1-UW-LTR.png"
-          alt="Sakamoto Days"
+          src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=cover,format=auto,quality=94,width=1920/keyart/GG5H5XQ35-backdrop_wide"
+          alt="Dragon Ball DAIMA"
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-1/4 left-4 md:left-12 max-w-2xl">
           <img
-            src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Solo%20Leveling/SEASON%202/ULTRA-WIDE/SoloLeveling-S2-KV1-UW-Logo.png"
-            alt="Solo Leveling"
+            src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/cr/logo/69975f73-97e1-40b6-a919-0d937e1a9005.png"
+            alt="Dragon Ball DAIMA"
             className="w-48 md:w-96 mb-4 md:mb-6"
           />
           <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6 text-sm md:text-base">
             <span className="text-green-500 font-semibold">
-              Nuevo Episodio cada Sábado
+              Nuevos Episodios el Viernes
             </span>
             <span>2024</span>
             <span className="bg-[#30CA38] text-white px-2 py-0.5 rounded text-xs font-bold">
-              +16
+              +12
             </span>
-            <span>2 Temporadas</span>
+            <span>1 Seasons</span>
             <span className="bg-[#30CA38] text-white px-2 py-0.5 rounded text-xs font-bold">
               HD
             </span>
           </div>
           <p className="text-sm md:text-lg mb-4 md:mb-6 text-gray-200 line-clamp-3 md:line-clamp-none">
-            En un mundo donde portales misteriosos conectan con mazmorras llenas
-            de monstruos, Sung Jin-Woo debe evolucionar de ser el cazador más
-            débil a convertirse en el más fuerte.
+          ¡Goku y compañía vivían vidas pacíficas cuando de repente se volvieron pequeños debido a una conspiración! Cuando descubren que la razón de esto puede estar en un mundo conocido como el "Reino de los Demonios", un joven y misterioso Majin llamado Glorio aparece ante ellos.
           </p>
           <div className="flex gap-2 md:gap-4">
             <button
-              onClick={() => handleEpisodeClick(getLatestEpisode())}
+              onClick={() => handleEpisodeClick(allEpisodes[1][0])}
               className="flex items-center gap-2 px-4 md:px-8 py-2 md:py-3 bg-white text-black rounded hover:bg-white/90 transition text-sm md:text-base"
             >
               <Play className="w-4 h-4 md:w-6 md:h-6" />
@@ -446,9 +384,9 @@ function SakamotoDaysTV() {
       </div>
 
       {/* Episodes Section */}
-      <section id="explorar" className="px-4 md:px-12 py-8 w-full">
-        <div className="max-w-8xl mx-auto">
-          {/* Season Selection, Sort, Filter and View Toggle */}
+      <section className="px-4 md:px-12 py-8">
+        <div className="max-w-9xl mx-auto">
+          {/* Season Selection and View Toggle */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-4">
               <h2 className="text-xl md:text-2xl font-semibold">Episodios</h2>
@@ -458,87 +396,60 @@ function SakamotoDaysTV() {
                   onChange={(e) => setSelectedSeason(Number(e.target.value))}
                   className="bg-[#2b2b2b] border border-gray-700 rounded px-4 py-2 appearance-none pr-10 text-sm focus:outline-none focus:border-[#dc2626]"
                 >
-                  <option value={1}>Temporada 1</option>
-                  <option value={2}>T2: Arise from the Shadow</option>
+                  {[1].map((season) => (
+                    <option key={season} value={season}>
+                      Season {season}
+                    </option>
+                  ))}
                 </select>
                 <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" />
               </div>
             </div>
-
-            {/* Rest of the component remains the same... */}
-            <div className="flex flex-wrap items-center gap-4">
-              {/* Episode Filter */}
-              <div className="relative flex-1 min-w-[200px]">
-                <input
-                  type="text"
-                  placeholder="Buscar episodio..."
-                  value={episodeFilter}
-                  onChange={(e) => setEpisodeFilter(e.target.value)}
-                  className="w-full bg-[#2b2b2b] border border-gray-700 rounded px-4 py-2 text-sm focus:outline-none focus:border-[#dc2626] placeholder-gray-400"
-                />
-                <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-              </div>
-
-              {/* Sort Button */}
+            <div className="flex items-center gap-4">
               <button
-                onClick={() => setEpisodeSort(episodeSort === 'newest' ? 'oldest' : 'newest')}
-                className="flex items-center gap-2 px-4 py-2 bg-[#2b2b2b] rounded hover:bg-[#363636] transition-colors"
+                onClick={() => setEpisodeView('grid')}
+                className={`p-2 rounded ${
+                  episodeView === 'grid'
+                    ? 'bg-[#dc2626] text-white'
+                    : 'bg-[#2b2b2b] text-gray-400'
+                }`}
               >
-                <span className="text-sm">
-                  {episodeSort === 'newest' ? 'Más recientes' : 'Más antiguos'}
-                </span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${
-                  episodeSort === 'newest' ? 'rotate-180' : ''
-                }`} />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                  />
+                </svg>
               </button>
-
-              {/* View Toggle Buttons */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setEpisodeView('grid')}
-                  className={`p-2 rounded ${
-                    episodeView === 'grid'
-                      ? 'bg-[#dc2626] text-white'
-                      : 'bg-[#2b2b2b] text-gray-400'
-                  }`}
+              <button
+                onClick={() => setEpisodeView('list')}
+                className={`p-2 rounded ${
+                  episodeView === 'list'
+                    ? 'bg-[#dc2626] text-white'
+                    : 'bg-[#2b2b2b] text-gray-400'
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 10h16M4 14h16M4 18h16"
-                    />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setEpisodeView('list')}
-                  className={`p-2 rounded ${
-                    episodeView === 'list'
-                      ? 'bg-[#dc2626] text-white'
-                      : 'bg-[#2b2b2b] text-gray-400'
-                  }`}
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                    />
-                  </svg>
-                </button>
-              </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -546,23 +457,19 @@ function SakamotoDaysTV() {
           <div
             className={`grid ${
               episodeView === 'grid'
-                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+                ? 'grid-cols-1 md:grid-cols-1 lg:grid-cols-6'
                 : 'grid-cols-1'
             } gap-4 md:gap-6`}
           >
-            {/* Rest of the episodes list code remains the same... */}
-          {getFilteredEpisodes(
-              getSortedEpisodes(
-                allEpisodes[selectedSeason as keyof typeof allEpisodes]
-              )
-            ).map((episode) => (
-              <div
-                key={episode.id}
-                onClick={() => handleEpisodeClick(episode)}
-                className={`bg-[#2b2b2b] rounded-lg overflow-hidden hover:bg-[#363636] transition-all cursor-pointer group
-                ${episodeView === 'grid' ? '' : 'flex flex-col md:flex-row'}`}
-              >
-                {/* Thumbnail */}
+            {allEpisodes[selectedSeason as keyof typeof allEpisodes].map(
+              (episode) => (
+                <div
+                  key={episode.id}
+                  onClick={() => handleEpisodeClick(episode)}
+                  className={`bg-[#2b2b2b] rounded-lg overflow-hidden hover:bg-[#363636] transition-all cursor-pointer group
+                  ${episodeView === 'grid' ? '' : 'flex flex-col md:flex-row'}`}
+                >
+                  {/* Thumbnail */}
                   <div
                     className={`relative ${
                       episodeView === 'grid'
@@ -582,9 +489,8 @@ function SakamotoDaysTV() {
                       {episode.duration}
                     </div>
                   </div>
-                {/* ... existing episode card code ... */}
 
-              {/* Episode Info */}
+                  {/* Episode Info */}
                   <div
                     className={`p-4 ${episodeView === 'grid' ? '' : 'flex-1'}`}
                   >
@@ -611,7 +517,7 @@ function SakamotoDaysTV() {
         </div>
       </section>
 
-  {/* Episode Modal */}
+      {/* Episode Modal */}
       {showEpisodeModal && selectedEpisode && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
           <div className="bg-[#181818] rounded-lg w-full max-w-4xl relative">
@@ -645,8 +551,7 @@ function SakamotoDaysTV() {
         </div>
       )}
 
-      {/* ... existing modals and footer code ... */}
-  {/* Info Modal */}
+      {/* Info Modal */}
       {showInfoModal && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
           <div className="bg-[#181818] rounded-lg w-full max-w-4xl relative">
@@ -660,50 +565,47 @@ function SakamotoDaysTV() {
             <div className="p-4 md:p-8">
               <div className="relative aspect-video mb-6">
                 <iframe
-                  src="https://www.youtube.com/embed/TceDFwPXCuI?si=Pwe8qBK_wKzIZ6a7"
+                  src="https://www.youtube.com/embed/Pu4xBOR4QKw?si=f0eFFcgJ9VQ8yPyj"
                   className="w-full h-full absolute inset-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Solo Leveling
+                Dragon Ball DAIMA
               </h2>
               <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6">
-                <span className="text-green-500 font-semibold">
-                  Puntuación media: 4.9 (429.5k)
-                </span>
-                <span>2024</span>
+                <span className="text-green-500 font-semibold">Puntuación media:
+4.8 (44.4k)</span>
+                <span>2025</span>
                 <span className="bg-[#30CA38] text-white px-2 py-0.5 rounded text-xs font-bold">
-                  TV-16
+                  +12
                 </span>
-                <span>2 Temporadas</span>
+                <span>1 Seasons</span>
                 <span className="bg-[#30CA38] text-white px-2 py-0.5 rounded text-xs font-bold">
                   HD
                 </span>
               </div>
               <p className="text-sm md:text-lg text-gray-300 mb-6 md:mb-8">
-                En un mundo donde portales misteriosos conectan con mazmorras
-                llenas de monstruos, Sung Jin-Woo debe evolucionar de ser el
-                cazador más débil a convertirse en el más fuerte.
+              ¡Goku y compañía vivían vidas pacíficas cuando de repente se volvieron pequeños debido a una conspiración! Cuando descubren que la razón de esto puede estar en un mundo conocido como el "Reino de los Demonios", un joven y misterioso Majin llamado Glorio aparece ante ellos.
               </p>
               <div className="grid md:grid-cols-2 gap-4 md:gap-8 text-xs md:text-sm text-gray-400">
                 <div>
                   <p>
-                    <span className="text-gray-200">Idioma:</span> Sub | Dob
+                    <span className="text-gray-200">Idiomas:</span> Subtitulado
                   </p>
                   <p>
-                    <span className="text-gray-200">Creador:</span> Chugong
+                    <span className="text-gray-200">Creador:</span> Akira Toriyama
                   </p>
                 </div>
                 <div>
                   <p>
                     <span className="text-gray-200">Generos:</span> Acción,
-                    Fantasía, Aventura
+                    Aventura, Shounen
                   </p>
                   <p>
                     <span className="text-gray-200">Aviso de contenido:</span>{' '}
-                    +16 Violencia, Gore
+                    +12 Violencia
                   </p>
                 </div>
               </div>
@@ -711,7 +613,8 @@ function SakamotoDaysTV() {
           </div>
         </div>
       )}
-  {/* Footer */}
+
+      {/* Footer */}
       <footer className="bg-[#141414] text-gray-400 py-12 mt-16 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -735,7 +638,7 @@ function SakamotoDaysTV() {
                 </li>
                 <li>
                   <a
-                    href="#directorio"
+                    href="https://all-anime.net/explorar"
                     onClick={handleNavigation}
                     className="hover:text-white transition-colors"
                   >
@@ -744,7 +647,7 @@ function SakamotoDaysTV() {
                 </li>
                 <li>
                   <a
-                    href="#peliculas"
+                    href="https://all-anime.net/peliculas"
                     onClick={handleNavigation}
                     className="hover:text-white transition-colors"
                   >
@@ -851,7 +754,7 @@ function SakamotoDaysTV() {
             </div>
           </div>
           <div className="mt-12 text-center text-xs">
-            <p>&copy; 2024 all-anime. Todos los derechos reservados.</p>
+            <p>&copy; 2024 All-Anime. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
@@ -859,4 +762,4 @@ function SakamotoDaysTV() {
   );
 }
 
-export default SakamotoDaysTV;
+export default App;

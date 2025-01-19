@@ -4,42 +4,82 @@ import { supabase } from '../lib/supabase';
 
 // Episodes data organized by seasons
 const allEpisodes = {
-  2: [
+  4: [
+    {
+      id: 1,
+      title: 'Tú no eres nivel E, ¿verdad?',
+      duration: '24 min',
+      description:
+        'Tras una reunión con los profesores de Jinah, le piden a Jinwoo que hable con una de sus compañeras que trabaja como cazadora. En un esfuerzo por mostrarle la dura realidad de su trabajo, Jinwoo la lleva a una incursión designada para los nuevos cazadores del gremio del Tigre Blanco.',
+      thumbnail:
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/39344f47fe32a4aeeaf4932683eb722d.jpg',
+      releaseDate: 'Enero 4, 2025',
+      episodeNumber: 'S2:E1',
+      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/1.html',
+    },
+    {
+      id: 2,
+      title: 'Parece que tú mismo no lo sabes',
+      duration: '24 min',
+      description:
+        'Tras quedar atrapado en el interior de unaun portal rojo, Jinwoo tiene que enfrentarse a un grupo de elfos de hielo sedientos de sangre que pondrán a prueba su humanidad.',
+      thumbnail:
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/c3407890525d516062576181edc69e33.jpg',
+      releaseDate: 'Enero 11, 2025',
+      episodeNumber: 'S2:2',
+      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/2.html',
+    },
+  ],
+  3: [
     {
       id: 13,
-      title: '13. Tú no eres nivel E, ¿verdad?',
+      title: 'Tú no eres nivel E, ¿verdad?',
       duration: '24 min',
       description:
         'Tras una reunión con los profesores de Jinah, le piden a Jinwoo que hable con una de sus compañeras que trabaja como cazadora. En un esfuerzo por mostrarle la dura realidad de su trabajo, Jinwoo la lleva a una incursión designada para los nuevos cazadores del gremio del Tigre Blanco.',
       thumbnail:
         'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e1a8566071311d4a6720540b0d02a623.jpg',
       releaseDate: 'Enero 4, 2025',
-      episodeNumber: 'Subtitulado',
+      episodeNumber: 'S2:E13',
       videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/13.html',
     },
     {
       id: 14,
-      title: '14. Parece que tú mismo no lo sabes',
+      title: 'Parece que tú mismo no lo sabes',
       duration: '24 min',
       description:
         'Tras quedar atrapado en el interior de unaun portal rojo, Jinwoo tiene que enfrentarse a un grupo de elfos de hielo sedientos de sangre que pondrán a prueba su humanidad.',
       thumbnail:
         'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/b27889eed12a1c5c1c5765eb0d8f82dc.jpg',
       releaseDate: 'Enero 11, 2025',
-      episodeNumber: 'Subtitulado',
+      episodeNumber: 'S2:E14',
       videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/14.html',
     },
+  ],
+  2: [
     {
-      id: 15,
-      title: '15. Aún queda mucho camino',
-      duration: '23 min',
+      id: 13,
+      title: 'Tú no eres nivel E, ¿verdad?',
+      duration: '24 min',
+      description:
+        'Tras una reunión con los profesores de Jinah, le piden a Jinwoo que hable con una de sus compañeras que trabaja como cazadora. En un esfuerzo por mostrarle la dura realidad de su trabajo, Jinwoo la lleva a una incursión designada para los nuevos cazadores del gremio del Tigre Blanco.',
+      thumbnail:
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e1a8566071311d4a6720540b0d02a623.jpg',
+      releaseDate: 'Enero 4, 2025',
+      episodeNumber: 'S2:E13',
+      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/13.html',
+    },
+    {
+      id: 14,
+      title: 'Parece que tú mismo no lo sabes',
+      duration: '24 min',
       description:
         'Tras quedar atrapado en el interior de unaun portal rojo, Jinwoo tiene que enfrentarse a un grupo de elfos de hielo sedientos de sangre que pondrán a prueba su humanidad.',
       thumbnail:
-        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/707acde43312c043b135a8d8d12f0372.jpg',
-      releaseDate: 'Enero 15, 2025',
-      episodeNumber: 'Subtitulado',
-      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/15.html',
+        'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/b27889eed12a1c5c1c5765eb0d8f82dc.jpg',
+      releaseDate: 'Enero 11, 2025',
+      episodeNumber: 'S2:E14',
+      videoUrl: 'https://all-anime.net/frame/Solo-Leveling/T2/14.html',
     },
   ],
   1: [
@@ -212,13 +252,8 @@ interface Episode {
   videoUrl: string;
 }
 
-interface Season {
-  id: number;
-  name: string;
-}
-
-function SakamotoDaysTV() {
-  const [selectedSeason, setSelectedSeason] = useState(1, 2);
+function SoloLevelingTV() {
+  const [selectedSeason, setSelectedSeason] = useState(2);
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [showEpisodeModal, setShowEpisodeModal] = useState(false);
@@ -228,14 +263,6 @@ function SakamotoDaysTV() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
-  const [episodeSort, setEpisodeSort] = useState<'newest' | 'oldest'>('newest');
-  const [episodeFilter, setEpisodeFilter] = useState('');
-
-  // Get latest episode for play button
-  const getLatestEpisode = () => {
-    const episodes = allEpisodes[selectedSeason as keyof typeof allEpisodes];
-    return episodes[episodes.length - 1];
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -246,13 +273,12 @@ function SakamotoDaysTV() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+    // Handle internal navigation here
+    const href = e.currentTarget.getAttribute('href');
+    if (href === '#') return;
+    // Add your navigation logic here
   };
 
   const handleEpisodeClick = (episode: Episode) => {
@@ -260,28 +286,8 @@ function SakamotoDaysTV() {
     setShowEpisodeModal(true);
   };
 
-  const getSortedEpisodes = (episodes: Episode[]) => {
-    const sortedEpisodes = [...episodes];
-    if (episodeSort === 'newest') {
-      return sortedEpisodes.reverse();
-    }
-    return sortedEpisodes;
-  };
-
-  const getFilteredEpisodes = (episodes: Episode[]) => {
-    if (!episodeFilter) return episodes;
-
-    return episodes.filter(
-      (episode) =>
-        episode.title.toLowerCase().includes(episodeFilter.toLowerCase()) ||
-        episode.episodeNumber
-          .toLowerCase()
-          .includes(episodeFilter.toLowerCase())
-    );
-  };
-
   return (
-    <div className="min-h-screen w-full bg-[#141414] text-white font-netflix overflow-x-hidden">
+    <div className="min-h-screen bg-[#141414] text-white font-netflix">
       {/* Header */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -299,22 +305,22 @@ function SakamotoDaysTV() {
             />
             <nav className="hidden md:flex gap-6">
               <a
-                href="#inicio"
-                onClick={(e) => handleNavigation(e, 'inicio')}
+                href="https://all-anime.net/inicio"
+                onClick={handleNavigation}
                 className="text-sm hover:text-gray-300"
               >
                 Inicio
               </a>
               <a
-                href="#explorar"
-                onClick={(e) => handleNavigation(e, 'explorar')}
+                href="https://all-anime.net/explorar"
+                onClick={handleNavigation}
                 className="text-sm hover:text-gray-300"
               >
                 Explorar
               </a>
               <a
-                href="#peliculas"
-                onClick={(e) => handleNavigation(e, 'peliculas')}
+                href="https://all-anime.net/peliculas"
+                onClick={handleNavigation}
                 className="text-sm hover:text-gray-300"
               >
                 Películas
@@ -370,22 +376,31 @@ function SakamotoDaysTV() {
           </div>
           <nav className="flex flex-col gap-4 p-8">
             <a
-              href="#inicio"
-              onClick={(e) => handleNavigation(e, 'inicio')}
+              href="https://all-anime.net/"
+              onClick={(e) => {
+                handleNavigation(e);
+                setIsMobileMenuOpen(false);
+              }}
               className="text-lg hover:text-gray-300 transition-colors"
             >
               Inicio
             </a>
             <a
-              href="#explorar"
-              onClick={(e) => handleNavigation(e, 'explorar')}
+              href="https://all-anime.net/explorar"
+              onClick={(e) => {
+                handleNavigation(e);
+                setIsMobileMenuOpen(false);
+              }}
               className="text-lg hover:text-gray-300 transition-colors"
             >
               Explorar
             </a>
             <a
               href="https://all-anime.net/peliculas"
-              onClick={(e) => handleNavigation(e, 'peliculas')}
+              onClick={(e) => {
+                handleNavigation(e);
+                setIsMobileMenuOpen(false);
+              }}
               className="text-lg hover:text-gray-300 transition-colors"
             >
               Películas
@@ -393,24 +408,23 @@ function SakamotoDaysTV() {
           </nav>
         </div>
       </header>
-
       {/* Hero Banner */}
-      <div id="inicio" className="relative h-[50vh] md:h-screen w-full">
+      <div className="relative h-[50vh] md:h-screen">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         <img
-          src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=94,width=1920/CurationAssets/Solo%20Leveling/SEASON%202/ULTRA-WIDE/SoloLeveling-S2-KV1-UW-LTR.png"
-          alt="Sakamoto Days"
+          src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=94,width=1920/CurationAssets/Dr%20STONE%20/SEASON%204/ULTRA-WIDE/DrSTONE-S4-KV1-UW-LTR.png"
+          alt="Dr. Stone"
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-1/4 left-4 md:left-12 max-w-2xl">
           <img
-            src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Solo%20Leveling/SEASON%202/ULTRA-WIDE/SoloLeveling-S2-KV1-UW-Logo.png"
-            alt="Solo Leveling"
+            src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Dr%20STONE%20/SEASON%204/ULTRA-WIDE/DrSTONE-S4-KV1-UW-Logo-EN.png"
+            alt="Dr. Stone"
             className="w-48 md:w-96 mb-4 md:mb-6"
           />
           <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6 text-sm md:text-base">
             <span className="text-green-500 font-semibold">
-              Nuevo Episodio cada Sábado
+              Nuevo Episodio cada Jueves
             </span>
             <span>2024</span>
             <span className="bg-[#30CA38] text-white px-2 py-0.5 rounded text-xs font-bold">
@@ -422,13 +436,11 @@ function SakamotoDaysTV() {
             </span>
           </div>
           <p className="text-sm md:text-lg mb-4 md:mb-6 text-gray-200 line-clamp-3 md:line-clamp-none">
-            En un mundo donde portales misteriosos conectan con mazmorras llenas
-            de monstruos, Sung Jin-Woo debe evolucionar de ser el cazador más
-            débil a convertirse en el más fuerte.
+          Senku es un joven extremadamente inteligente con un gran don para la ciencia y una ácida personalidad, y su mejor amigo es Taiju, que es muy buena persona pero más apto para usar los músculos que para pensar. Cuando tras cierto incidente toda la humanidad acaba convertida en piedra, ellos logran
           </p>
           <div className="flex gap-2 md:gap-4">
             <button
-              onClick={() => handleEpisodeClick(getLatestEpisode())}
+              onClick={() => handleEpisodeClick(allEpisodes[2][0])}
               className="flex items-center gap-2 px-4 md:px-8 py-2 md:py-3 bg-white text-black rounded hover:bg-white/90 transition text-sm md:text-base"
             >
               <Play className="w-4 h-4 md:w-6 md:h-6" />
@@ -446,9 +458,9 @@ function SakamotoDaysTV() {
       </div>
 
       {/* Episodes Section */}
-      <section id="explorar" className="px-4 md:px-12 py-8 w-full">
-        <div className="max-w-8xl mx-auto">
-          {/* Season Selection, Sort, Filter and View Toggle */}
+      <section className="px-4 md:px-12 py-8">
+        <div className="max-w-9xl mx-auto">
+          {/* Season Selection and View Toggle */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-4">
               <h2 className="text-xl md:text-2xl font-semibold">Episodios</h2>
@@ -458,87 +470,60 @@ function SakamotoDaysTV() {
                   onChange={(e) => setSelectedSeason(Number(e.target.value))}
                   className="bg-[#2b2b2b] border border-gray-700 rounded px-4 py-2 appearance-none pr-10 text-sm focus:outline-none focus:border-[#dc2626]"
                 >
-                  <option value={1}>Temporada 1</option>
-                  <option value={2}>T2: Arise from the Shadow</option>
+                  {[4, 3, 2, 1].map((season) => (
+                    <option key={season} value={season}>
+                      Season {season}
+                    </option>
+                  ))}
                 </select>
                 <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" />
               </div>
             </div>
-
-            {/* Rest of the component remains the same... */}
-            <div className="flex flex-wrap items-center gap-4">
-              {/* Episode Filter */}
-              <div className="relative flex-1 min-w-[200px]">
-                <input
-                  type="text"
-                  placeholder="Buscar episodio..."
-                  value={episodeFilter}
-                  onChange={(e) => setEpisodeFilter(e.target.value)}
-                  className="w-full bg-[#2b2b2b] border border-gray-700 rounded px-4 py-2 text-sm focus:outline-none focus:border-[#dc2626] placeholder-gray-400"
-                />
-                <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-              </div>
-
-              {/* Sort Button */}
+            <div className="flex items-center gap-4">
               <button
-                onClick={() => setEpisodeSort(episodeSort === 'newest' ? 'oldest' : 'newest')}
-                className="flex items-center gap-2 px-4 py-2 bg-[#2b2b2b] rounded hover:bg-[#363636] transition-colors"
+                onClick={() => setEpisodeView('grid')}
+                className={`p-2 rounded ${
+                  episodeView === 'grid'
+                    ? 'bg-[#dc2626] text-white'
+                    : 'bg-[#2b2b2b] text-gray-400'
+                }`}
               >
-                <span className="text-sm">
-                  {episodeSort === 'newest' ? 'Más recientes' : 'Más antiguos'}
-                </span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${
-                  episodeSort === 'newest' ? 'rotate-180' : ''
-                }`} />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                  />
+                </svg>
               </button>
-
-              {/* View Toggle Buttons */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setEpisodeView('grid')}
-                  className={`p-2 rounded ${
-                    episodeView === 'grid'
-                      ? 'bg-[#dc2626] text-white'
-                      : 'bg-[#2b2b2b] text-gray-400'
-                  }`}
+              <button
+                onClick={() => setEpisodeView('list')}
+                className={`p-2 rounded ${
+                  episodeView === 'list'
+                    ? 'bg-[#dc2626] text-white'
+                    : 'bg-[#2b2b2b] text-gray-400'
+                }`}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 10h16M4 14h16M4 18h16"
-                    />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setEpisodeView('list')}
-                  className={`p-2 rounded ${
-                    episodeView === 'list'
-                      ? 'bg-[#dc2626] text-white'
-                      : 'bg-[#2b2b2b] text-gray-400'
-                  }`}
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                    />
-                  </svg>
-                </button>
-              </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -546,23 +531,19 @@ function SakamotoDaysTV() {
           <div
             className={`grid ${
               episodeView === 'grid'
-                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-6'
                 : 'grid-cols-1'
             } gap-4 md:gap-6`}
           >
-            {/* Rest of the episodes list code remains the same... */}
-          {getFilteredEpisodes(
-              getSortedEpisodes(
-                allEpisodes[selectedSeason as keyof typeof allEpisodes]
-              )
-            ).map((episode) => (
-              <div
-                key={episode.id}
-                onClick={() => handleEpisodeClick(episode)}
-                className={`bg-[#2b2b2b] rounded-lg overflow-hidden hover:bg-[#363636] transition-all cursor-pointer group
-                ${episodeView === 'grid' ? '' : 'flex flex-col md:flex-row'}`}
-              >
-                {/* Thumbnail */}
+            {allEpisodes[selectedSeason as keyof typeof allEpisodes].map(
+              (episode) => (
+                <div
+                  key={episode.id}
+                  onClick={() => handleEpisodeClick(episode)}
+                  className={`bg-[#2b2b2b] rounded-lg overflow-hidden hover:bg-[#363636] transition-all cursor-pointer group
+                  ${episodeView === 'grid' ? '' : 'flex flex-col md:flex-row'}`}
+                >
+                  {/* Thumbnail */}
                   <div
                     className={`relative ${
                       episodeView === 'grid'
@@ -582,9 +563,8 @@ function SakamotoDaysTV() {
                       {episode.duration}
                     </div>
                   </div>
-                {/* ... existing episode card code ... */}
 
-              {/* Episode Info */}
+                  {/* Episode Info */}
                   <div
                     className={`p-4 ${episodeView === 'grid' ? '' : 'flex-1'}`}
                   >
@@ -611,7 +591,7 @@ function SakamotoDaysTV() {
         </div>
       </section>
 
-  {/* Episode Modal */}
+      {/* Episode Modal */}
       {showEpisodeModal && selectedEpisode && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
           <div className="bg-[#181818] rounded-lg w-full max-w-4xl relative">
@@ -631,7 +611,9 @@ function SakamotoDaysTV() {
                   allowFullScreen
                 ></iframe>
               </div>
-              <h2 className="text-2xl font-bold mb-2">{selectedEpisode.title}</h2>
+              <h2 className="text-2xl font-bold mb-2">
+                {selectedEpisode.title}
+              </h2>
               <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <span>{selectedEpisode.episodeNumber}</span>
                 <span>•</span>
@@ -645,8 +627,7 @@ function SakamotoDaysTV() {
         </div>
       )}
 
-      {/* ... existing modals and footer code ... */}
-  {/* Info Modal */}
+      {/* Info Modal */}
       {showInfoModal && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
           <div className="bg-[#181818] rounded-lg w-full max-w-4xl relative">
@@ -667,7 +648,7 @@ function SakamotoDaysTV() {
                 ></iframe>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Solo Leveling
+                Dr. Stone
               </h2>
               <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6">
                 <span className="text-green-500 font-semibold">
@@ -683,9 +664,7 @@ function SakamotoDaysTV() {
                 </span>
               </div>
               <p className="text-sm md:text-lg text-gray-300 mb-6 md:mb-8">
-                En un mundo donde portales misteriosos conectan con mazmorras
-                llenas de monstruos, Sung Jin-Woo debe evolucionar de ser el
-                cazador más débil a convertirse en el más fuerte.
+              Senku es un joven extremadamente inteligente con un gran don para la ciencia y una ácida personalidad, y su mejor amigo es Taiju, que es muy buena persona pero más apto para usar los músculos que para pensar. Cuando tras cierto incidente toda la humanidad acaba convertida en piedra, ellos logran despertarse en un mundo miles de años después, con la civilización humana completamente desaparecida y con toda la humanidad congelada en piedra como ellos estuvieron. Ahora es su obligación rescatar a la gente y crear un nuevo mundo.
               </p>
               <div className="grid md:grid-cols-2 gap-4 md:gap-8 text-xs md:text-sm text-gray-400">
                 <div>
@@ -711,7 +690,7 @@ function SakamotoDaysTV() {
           </div>
         </div>
       )}
-  {/* Footer */}
+      {/* Footer */}
       <footer className="bg-[#141414] text-gray-400 py-12 mt-16 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -735,7 +714,7 @@ function SakamotoDaysTV() {
                 </li>
                 <li>
                   <a
-                    href="#directorio"
+                    href="https://all-anime.net/explorar"
                     onClick={handleNavigation}
                     className="hover:text-white transition-colors"
                   >
@@ -744,7 +723,7 @@ function SakamotoDaysTV() {
                 </li>
                 <li>
                   <a
-                    href="#peliculas"
+                    href="https://all-anime.net/peliculas"
                     onClick={handleNavigation}
                     className="hover:text-white transition-colors"
                   >
@@ -786,11 +765,11 @@ function SakamotoDaysTV() {
               </ul>
             </div>
             <div>
-              <h3 className="text-white font-semibold mb-4">Sobre All-Anime</h3>
+              <h3 className="text-white font-semibold mb-4">Sobre all-anime</h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <a
-                    href="#about"
+                    href="https://all-anime.net/sobre-all-anime"
                     onClick={handleNavigation}
                     className="hover:text-white transition-colors"
                   >
@@ -859,4 +838,5 @@ function SakamotoDaysTV() {
   );
 }
 
-export default SakamotoDaysTV;
+
+export default SoloLevelingTV;
